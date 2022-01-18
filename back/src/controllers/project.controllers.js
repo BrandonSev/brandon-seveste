@@ -1,4 +1,4 @@
-const { Project } = require("../models");
+const { Project, Images } = require("../models");
 
 const findAll = async (req, res) => {
   try {
@@ -16,7 +16,8 @@ const findOneById = async (req, res) => {
   try {
     const [results] = await Project.findOneById(id);
     if (results.length === 0) return res.status(404).send();
-    return res.status(statusCode).send(results);
+    const [images] = await Images.findImagesByProjectId(id);
+    return res.status(statusCode).json({ ...results[0], images });
   } catch (e) {
     return res.status(500).send(e.message);
   }

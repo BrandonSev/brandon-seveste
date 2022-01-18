@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Prefix all routes with /api
 app.use("/api", mainRouter);
+app.use("/images", express.static("public/images"));
 
 const server = app.listen(process.env.PORT || 8000, (err) => {
   // eslint-disable-next-line no-console
