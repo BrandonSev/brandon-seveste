@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  max-width: fit-content;
+  padding: 2rem 0;
+
+  > * {
+    &:not(:last-child){
+      padding-right: 2rem;
+    }
+    a {
+      padding-bottom: 0.5rem;
+    }
+  }
+}
