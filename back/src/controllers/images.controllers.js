@@ -26,13 +26,17 @@ const findOneById = async (req, res) => {
   }
 };
 
-const createMultiple = async (req, res, next) => {
+const create = async (req, res, next) => {
   if (!req.files) {
     return next();
   }
   req.files.map(async (file) => {
     try {
-      return await Images.createOne({ src: file.filename, alt: file.originalname.split(".")[0], project_id: req.id });
+      return await Images.createOne({
+        src: file.filename,
+        alt: file.originalname.split(".")[0],
+        project_id: req.id,
+      });
     } catch (e) {
       return res.status(500).send(e.message);
     }
@@ -49,9 +53,17 @@ const uploadFile = (req, res, next) => {
       cb(null, `${Date.now()}-${file.originalname}`);
     },
   });
-
+  const fileFilter = (request, file, cb) => {
+    const typeArray = file.mimetype.split("/");
+    const fileType = typeArray[1];
+    if (fileType === "jpg" || fileType === "png" || fileType === "jpeg") {
+      return cb(null, true);
+    }
+    return res.status(422).send({ message: "Seulement les formats, jpg / png / jpeg" });
+  };
   const upload = multer({
     storage,
+    fileFilter,
   }).array("images", 10);
 
   return upload(req, res, async (err) => {
@@ -68,6 +80,6 @@ const uploadFile = (req, res, next) => {
 module.exports = {
   findAll,
   findOneById,
-  createMultiple,
+  create,
   uploadFile,
 };

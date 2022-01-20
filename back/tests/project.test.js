@@ -54,6 +54,11 @@ describe("Test API endpoint /projects", () => {
       expect(res.body.images).toEqual(expect.arrayContaining([expect.objectContaining({ project_id: 1 })]));
       expect(res.statusCode).toBe(201);
     });
+    it("POST /api/projects with valid value and bad format attachement return code 422", async () => {
+      const res = await request(app).post("/api/projects").field("data", JSON.stringify(projectPayload)).attach("images", `${__dirname}/test.pdf`);
+      expect(res.body).toEqual(expect.objectContaining({ message: "Seulement les formats, jpg / png / jpeg" }));
+      expect(res.statusCode).toBe(422);
+    });
     it("POST /api/projects with valid value and no images return code 201", async () => {
       const res = await request(app).post("/api/projects").send(projectPayload);
       expect(res.statusCode).toBe(201);

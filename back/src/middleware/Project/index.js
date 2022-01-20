@@ -1,4 +1,3 @@
-// eslint-disable-next-line consistent-return
 const { Project } = require("../../models");
 
 const validateCreateProject = (req, res, next) => {
