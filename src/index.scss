@@ -81,6 +81,14 @@ button {
 .px-1 {
   padding: 0 1rem;
 }
+::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF33;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: var(--background); /* or add it to the track */
+}
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
@@ -102,3 +110,6 @@ button {
 @import "./styles/pages/home";
 @import "./styles/pages/mes-realisations";
 @import "./styles/pages/contact";
+
+@import "./styles/dashboard/index";
+@import "./styles/dashboard/dashboard";

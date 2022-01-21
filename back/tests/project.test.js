@@ -41,6 +41,7 @@ describe("Test API endpoint /projects", () => {
   describe("GET all project", () => {
     it("GET /api/projects and should return code 200", async () => {
       const res = await request(app).get("/api/projects");
+      expect(res.body.length).toBe(0);
       expect(res.statusCode).toBe(200);
     });
   });
