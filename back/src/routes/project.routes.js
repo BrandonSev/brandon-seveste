@@ -1,6 +1,6 @@
 const projectRouter = require("express").Router();
 const { ProjectController, ImagesController } = require("../controllers");
-const { validateCreateProject, validatePutProject } = require("../middleware/Project");
+const { validateCreateProject, validatePutProject, removeLastImages } = require("../middleware/Project");
 
 projectRouter.get("/", ProjectController.findAll);
 projectRouter.get("/:id", ProjectController.findOneById);
@@ -16,6 +16,6 @@ projectRouter.post(
 
 projectRouter.put("/:id", validatePutProject, ProjectController.updateOne, ProjectController.findOneById);
 
-projectRouter.delete("/:id", ProjectController.deleteOne);
+projectRouter.delete("/:id", removeLastImages, ProjectController.deleteOne);
 
 module.exports = projectRouter;

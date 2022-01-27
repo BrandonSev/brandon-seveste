@@ -27,6 +27,7 @@ const badProjectPayload = {
 
 const putProjectPayload = {
   title: "Projet 2",
+  active: 0,
 };
 
 describe("Test API endpoint /projects", () => {
@@ -77,7 +78,7 @@ describe("Test API endpoint /projects", () => {
   describe("PUT projects", () => {
     it("PUT /api/projects/1 with valid value return code 200", async () => {
       const res = await request(app).put("/api/projects/1").send(putProjectPayload);
-      expect(res.body).toEqual(expect.objectContaining({ title: "Projet 2" }));
+      expect(res.body).toEqual(expect.objectContaining({ title: "Projet 2", active: 0 }));
       expect(res.statusCode).toBe(200);
     });
     it("PUT /api/projects/3 with unknown id return code 404", async () => {

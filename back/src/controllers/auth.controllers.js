@@ -43,11 +43,11 @@ module.exports.signIn = async (req, res) => {
   try {
     return await db.query("SELECT * FROM admin WHERE email = ?", [email], async (err, result) => {
       if (err) return res.status(400).send(err);
-      if (!result.length) return res.status(404).json({ message: "Cet email est introuvable" });
+      if (!result.length) return res.status(404).send({ message: "Cet email est introuvable" });
       const comparison = await bcrypt.compare(password, result[0].password);
       if (comparison) {
         const token = createToken(result[0].id);
-        res.cookie("jwt", token, { httpOnly: true, maxAge });
+        res.cookie("jwt", token, { httpOnly: false, maxAge });
         return res.status(200).json({
           message: "Connexion réussi",
         });
