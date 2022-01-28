@@ -1,35 +1,35 @@
 const { connection } = require("../../db-connection");
 
-class Category {
+class UnderCategory {
   static findAll() {
-    const sql = "SELECT * FROM category";
+    const sql = "SELECT * FROM under_category";
     return connection.promise().query(sql);
   }
 
   static findOneById(id) {
-    const sql = "SELECT * FROM category WHERE id=?";
+    const sql = "SELECT * FROM under_category WHERE id=?";
     return connection.promise().query(sql, [id]);
   }
 
   static createOne(category) {
-    const sql = "INSERT INTO category SET ?";
+    const sql = "INSERT INTO under_category SET ?";
     return connection.promise().query(sql, [category]);
   }
 
   static updateOne(category, id) {
-    const sql = "UPDATE category SET ? WHERE id=?";
+    const sql = "UPDATE under_category SET ? WHERE id=?";
     return connection.promise().query(sql, [category, id]);
   }
 
   static deleteOne(id) {
-    const sql = "DELETE FROM category WHERE id=?";
+    const sql = "DELETE FROM under_category WHERE id=?";
     return connection.promise().query(sql, [id]);
   }
 
   static findOneByTitle(title) {
-    const sql = "SELECT * FROM category WHERE title=?";
+    const sql = "SELECT * FROM under_category WHERE title=?";
     return connection.promise().query(sql, [title]);
   }
 }
 
-module.exports = Category;
+module.exports = UnderCategory;
