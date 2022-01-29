@@ -13,7 +13,8 @@
     "migrate-db": "db-migrate up",
     "rollback-last-db-migration": "db-migrate down",
     "test:migrate-db": "db-migrate up -e test",
-    "test:rollback-last-db-migration": "db-migrate down -e test"
+    "test:rollback-last-db-migration": "db-migrate down -e test",
+    "precommit": "pnpm format && pnpm lint"
   },
   "jest": {
     "testRunner": "jest-circus/runner",

@@ -30,6 +30,11 @@ class UnderCategory {
     const sql = "SELECT * FROM under_category WHERE title=?";
     return connection.promise().query(sql, [title]);
   }
+
+  static findCategories(id) {
+    const sql = "SELECT * FROM under_category WHERE category_id=?";
+    return connection.promise().query(sql, [id]);
+  }
 }
 
 module.exports = UnderCategory;

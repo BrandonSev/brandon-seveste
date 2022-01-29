@@ -4,6 +4,7 @@ const imagesRouter = require("./images.routes");
 const authRouter = require("./auth.routes");
 const categoryRouter = require("./category.routes");
 const underCategoryRouter = require("./underCategory.routes");
+const technologyRouter = require("./technology.routes");
 
 mainRouter.use("/projects", projectRouter);
 
@@ -14,5 +15,7 @@ mainRouter.use("/", authRouter);
 mainRouter.use("/categories", categoryRouter);
 
 mainRouter.use("/underCategories", underCategoryRouter);
+
+mainRouter.use("/technologies", technologyRouter);
 
 module.exports = mainRouter;

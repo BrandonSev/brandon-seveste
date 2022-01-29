@@ -1,20 +1,12 @@
-const { Category, UnderCategory } = require("../models");
+const { Technology } = require("../models");
 
 const findAll = async (req, res) => {
   try {
-    const { under_category } = req.query;
-    if (under_category) {
-      try {
-        const [results] = await UnderCategory.findCategories(under_category);
-        if (!results.length) {
-          return res.status(404).send();
-        }
-        return res.status(200).send(results);
-      } catch (e) {
-        return res.status(500).send(e.message);
-      }
-    }
-    const [results] = await Category.findAll();
+    const [technology] = await Technology.findAll();
+    let results = [];
+    technology.forEach((tech, i) => {
+      results = [...results, { ...tech, category: { title: technology[i].category }, under_category: { title: technology[i].under_category } }];
+    });
     return res.status(200).send(results);
   } catch (e) {
     return res.status(500).send(e.message);
@@ -26,10 +18,10 @@ const findOneById = async (req, res) => {
   const statusCode = req.method === "POST" ? 201 : 200;
   if (!id || !Number(id)) return res.status(400).json({ message: "Vous devez fournir un id valide" });
   try {
-    const [results] = await Category.findOneById(id);
+    const [results] = await Technology.findOneById(id);
     if (results.length === 0) return res.status(404).send();
     // recuperer ici les sous catégorie associés
-    return res.status(statusCode).json({ ...results[0], images: {} });
+    return res.status(statusCode).json({ ...results[0] });
   } catch (e) {
     return res.status(500).send(e.message);
   }
@@ -37,7 +29,7 @@ const findOneById = async (req, res) => {
 
 const createOne = async (req, res, next) => {
   try {
-    const [result] = await Category.createOne(req.categoryInformation);
+    const [result] = await Technology.createOne(req.technologyInformation);
     req.id = result.insertId;
     return next();
   } catch (e) {
@@ -48,7 +40,7 @@ const createOne = async (req, res, next) => {
 const updateOne = async (req, res, next) => {
   const { id } = req.params;
   try {
-    await Category.updateOne(req.categoryInformation, id);
+    await Technology.updateOne(req.technologyInformation, id);
     return next();
   } catch (e) {
     return res.status(500).send(e.message);
@@ -58,7 +50,7 @@ const updateOne = async (req, res, next) => {
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const [result] = await Category.deleteOne(id);
+    const [result] = await Technology.deleteOne(id);
     if (result.affectedRows === 0) return res.status(404).send();
     return res.status(204).send();
   } catch (e) {
