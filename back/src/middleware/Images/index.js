@@ -16,6 +16,9 @@ const validatePutImages = (req, res, next) => {
 };
 
 const deletePrevImage = async (req, res, next) => {
+  if (req.method === "PUT") {
+    if (!req.files.length) return next();
+  }
   try {
     const [[image]] = await Images.findOneById(req.params.id);
     return fs.unlink(path.join(__dirname, `../../../public/images/${image.src}`), (err) => {
