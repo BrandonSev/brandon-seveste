@@ -8,7 +8,7 @@ const mainRouter = require("./src/routes");
 const { connection } = require("./db-connection");
 const { checkUser, isAuthenticated } = require("./src/middleware/Auth");
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3001"], credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

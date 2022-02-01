@@ -72,10 +72,10 @@ const uploadFile = (req, res, next) => {
   const fileFilter = (request, file, cb) => {
     const typeArray = file.mimetype.split("/");
     const fileType = typeArray[1];
-    if (fileType === "jpg" || fileType === "png" || fileType === "jpeg") {
+    if (fileType === "jpg" || fileType === "png" || fileType === "jpeg" || fileType === "svg+xml") {
       return cb(null, true);
     }
-    return res.status(422).send({ message: "Seulement les formats, jpg / png / jpeg" });
+    return res.status(422).send({ message: "Seulement les formats, jpg / png / jpeg / svg sont autorisés" });
   };
   const upload = multer({
     storage,

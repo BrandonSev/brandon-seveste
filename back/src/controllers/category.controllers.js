@@ -1,21 +1,41 @@
-const { Category, UnderCategory } = require("../models");
+const { Category, UnderCategory, Technology } = require("../models");
 
 const findAll = async (req, res) => {
   try {
-    const { under_category } = req.query;
-    if (under_category) {
-      try {
-        const [results] = await UnderCategory.findCategories(under_category);
-        if (!results.length) {
-          return res.status(404).send();
-        }
-        return res.status(200).send(results);
-      } catch (e) {
-        return res.status(500).send(e.message);
-      }
+    const [categories] = await Category.findAll();
+    if (req.query.under_category) {
+      const [underCategorie] = await UnderCategory.findCategories(req.query.under_category);
+      return res.status(200).send(underCategorie);
     }
-    const [results] = await Category.findAll();
-    return res.status(200).send(results);
+    if (req.query.underCategories && req.query.technologies) {
+      const arr = [];
+      const results = await Promise.all(
+        categories.map((category) => {
+          arr.push(category);
+          return UnderCategory.findCategories(category.id);
+        }),
+      );
+      results.forEach((underCategorie, index) => {
+        arr[index] = { ...arr[index], underCategories: underCategorie[0] };
+      });
+      const test = await Promise.all(
+        arr.map(async (categorie) => {
+          const technologies = await Promise.all(
+            categorie.underCategories.map((underCategory) => {
+              return Technology.findUnderCategories(underCategory.id);
+            }),
+          );
+          return {
+            ...categorie,
+            underCategories: categorie.underCategories.map((underCategories, i) => {
+              return { ...underCategories, technologies: technologies[i][0] };
+            }),
+          };
+        }),
+      );
+      return res.status(200).send(test);
+    }
+    return res.send(categories);
   } catch (e) {
     return res.status(500).send(e.message);
   }

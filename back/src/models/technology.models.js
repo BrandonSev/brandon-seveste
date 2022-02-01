@@ -27,14 +27,14 @@ class Technology {
     return connection.promise().query(sql, [id]);
   }
 
-  static findCategories() {
-    const sql = "SELECT t.*, c.title FROM category as c INNER JOIN technology as t ON t.category_id=c.id";
-    return connection.promise().query(sql, []);
+  static findCategories(id) {
+    const sql = "SELECT * FROM technology WHERE under_category_id=?";
+    return connection.promise().query(sql, [id]);
   }
 
-  static findUnderCategories() {
-    const sql = "SELECT u.*, c.title FROM under_category as c INNER JOIN technology as u ON u.under_category_id=c.id";
-    return connection.promise().query(sql, []);
+  static findUnderCategories(id) {
+    const sql = "SELECT * from technology WHERE under_category_id=?";
+    return connection.promise().query(sql, [id]);
   }
 }
 
