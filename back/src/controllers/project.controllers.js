@@ -1,9 +1,34 @@
 const { Project, Images } = require("../models");
 
 const findAll = async (req, res) => {
+  const { active } = req.query;
+  if (active) {
+    try {
+      const [projects] = await Project.findAllActive();
+      const arr = [];
+      await Promise.all(
+        projects.map(async (project, index) => {
+          arr.push(project);
+          const [images] = await Images.findImagesByProjectId(project.id);
+          arr[index] = { ...arr[index], images };
+        }),
+      );
+      return res.status(200).send(arr);
+    } catch (e) {
+      return res.status(500).send(e.message);
+    }
+  }
   try {
     const [results] = await Project.findAll();
-    return res.status(200).send(results);
+    const arr = [];
+    await Promise.all(
+      results.map(async (project, index) => {
+        arr.push(project);
+        const [images] = await Images.findImagesByProjectId(project.id);
+        arr[index] = { ...arr[index], images };
+      }),
+    );
+    return res.status(200).send(arr);
   } catch (e) {
     return res.status(500).send(e.message);
   }

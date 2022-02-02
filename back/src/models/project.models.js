@@ -6,6 +6,11 @@ class Project {
     return connection.promise().query(sql);
   }
 
+  static findAllActive() {
+    const sql = "SELECT * FROM project WHERE active=1";
+    return connection.promise().query(sql);
+  }
+
   static findOneById(id) {
     const sql = "SELECT * FROM project WHERE id=?";
     return connection.promise().query(sql, [id]);

@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+::selection{
+  background-color: var(--secondary);
+  color: var(--background)
+}
+
 body {
   font-size: 18px;
   font-family: 'Roboto', sans-serif;

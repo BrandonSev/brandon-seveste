@@ -27,15 +27,35 @@
         font-size: 1.3rem;
       }
 
+      .slick-list {
+        margin-top: 0;
+      }
+
+      .project_card__header {
+        .slick-slide {
+          padding: 0;
+        }
+
+      }
+
       p:not(.technology) {
         color: var(--primary);
         opacity: .8;
         padding: 1.5rem 0;
         font-size: .98rem;
+        max-height: 111px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+        line-height: 1.4;
+
       }
 
       .project_card__body {
+        height: 262px;
         padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
 
         .technology {
           color: var(--secondary);
@@ -46,35 +66,38 @@
         .project_card__button {
           display: flex;
           justify-content: flex-end;
+          margin-top: 2rem;
+          justify-self: flex-end;
         }
       }
 
     }
 
-    .slick-slider {
+    .slick-list {
       margin-top: 3rem;
 
       .slick-slide {
         padding: 0 .5rem;
       }
+    }
 
-      .slick-dots {
-        bottom: -34px;
+    .slick-dots {
+      bottom: -34px;
 
-        .slick-active {
-          button:before {
-            color: var(--secondary)
-          }
-        }
-
+      .slick-active {
         button:before {
-          font-size: .8rem;
-          color: var(--primary);
-          opacity: 1;
+          color: var(--secondary)
         }
+      }
+
+      button:before {
+        font-size: .8rem;
+        color: var(--primary);
+        opacity: 1;
       }
     }
 
+  }
     .dots {
       margin-top: 2rem;
       display: flex;
@@ -100,5 +123,4 @@
     .dot.active {
       background: var(--secondary);
     }
-  }
 }
