@@ -43,7 +43,13 @@ button {
   padding-right: 15px;
   margin: 0 auto;
 }
-
+.error {
+  margin-top: .5rem;
+  color: red
+}
+.input-error {
+  border: 1px solid red !important;
+}
 .button{
   display: inline-block;
   background-color: var(--secondary);

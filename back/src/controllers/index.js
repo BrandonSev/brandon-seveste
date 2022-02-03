@@ -5,4 +5,11 @@ const CategoryController = require("./category.controllers");
 const UnderCategoryController = require("./underCategory.controllers");
 const TechnologyController = require("./technology.controllers");
 
-module.exports = { ProjectController, ImagesController, AuthController, CategoryController, UnderCategoryController, TechnologyController };
+module.exports = {
+  ProjectController,
+  ImagesController,
+  AuthController,
+  CategoryController,
+  UnderCategoryController,
+  TechnologyController,
+};
