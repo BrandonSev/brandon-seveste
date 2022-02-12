@@ -32,20 +32,23 @@ const Home = () => {
         <div className="container">
           <h2 className={"active"}>Mes compétences</h2>
           <div className="skills_wrapper">
-            {categories &&
+            {categories ? (
               categories.map((category) => {
                 return (
                   <div className={`skills_${category.title.toLowerCase()}`}>
                     <span className="skills_badge">{category.title}</span>
                     {category.underCategories.map((underCategory) => {
                       return (
-                        <div className="skills_frontend__language">
+                        <div
+                          className={`skills_${category.title.toLowerCase()}__language`}
+                          key={underCategory.id}
+                        >
                           <p>{underCategory.title}</p>
                           {underCategory.technologies.length ? (
                             <ul>
                               {underCategory.technologies.map((technology) => {
                                 return (
-                                  <li>
+                                  <li key={technology.id}>
                                     <img
                                       src={`${process.env.REACT_APP_API_URL}/images/${technology.logo}`}
                                       alt={technology.name}
@@ -65,7 +68,10 @@ const Home = () => {
                     })}
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <div style={{ height: 500 }}></div>
+            )}
           </div>
         </div>
       </section>

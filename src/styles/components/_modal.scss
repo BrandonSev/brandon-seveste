@@ -1,7 +1,7 @@
 .modal {
   position: fixed;
   left: 0;
-  top: 20vh;
+  top: 7vh;
   bottom: 0;
   right: 0;
   width: 90%;
@@ -85,9 +85,11 @@
     p.description {
       color: var(--primary);
       opacity: .8;
-      padding: 2rem 0;
+      margin: 2rem 0;
       font-size: .98rem;
       line-height: 1.4;
+      max-height: 205px;
+      overflow: auto;
     }
 
     .modal_button {
@@ -110,6 +112,7 @@
     border-radius: 50%;
     border: 2px solid var(--secondary);
     z-index: 2;
+    cursor: pointer;
 
     svg {
       width: 26px;
@@ -119,12 +122,14 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .modal {
+    top: 11vh;
     width: 65%;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .modal {
+    top: 14vh;
     min-width: 700px;
     width: 40%;
   }

@@ -17,10 +17,10 @@ const transport = nodemailer.createTransport({
 emailRouter.post("/send", async (req, res) => {
   const { name, email, message, subject } = req.body;
   const mailOptions = {
-    from: SENDER_EMAIL_ADDRESS,
-    to: email,
+    from: email,
+    to: SENDER_EMAIL_ADDRESS,
     subject: `${subject} - ${name}`,
-    text: message,
+    html: `<p style="font-weight: bold">${name}</p><p>${message}</p>`,
   };
   await transport.sendMail(mailOptions, (err) => {
     if (err) return res.status(500).send(err);

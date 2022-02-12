@@ -1,5 +1,4 @@
 .contact {
-  margin-top: 3rem;
   padding: 3rem 0;
   background-color: var(--primary-light);
 
@@ -30,16 +29,15 @@
         }
 
         .input_controll {
-          padding: .7rem;
+          padding: 1rem;
           width: 100%;
           border-radius: 5px;
           outline: none;
-          background-color: rgba(255, 255, 255, 0.2);
-          border: 0;
-          font-family: 'Roboto', sans-serif;
+          background-color: rgba(255, 255, 255, 0.04);
+          border: 1px solid #FFFFFF33;
+            font-family: 'Roboto', sans-serif;
           color: var(--primary);
           font-size: 1rem;
-          transition: border 1s;
 
           &:focus {
             border: 1px solid var(--secondary)

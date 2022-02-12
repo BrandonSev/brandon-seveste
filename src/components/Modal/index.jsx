@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Modal = ({
   images,
@@ -17,8 +18,33 @@ const Modal = ({
     slidesToScroll: 1,
     arrows: false,
   };
+
+  const modalVariant = {
+    hidden: {
+      scale: 0,
+      opacity: 0,
+      transition: {
+        delay: 0.3,
+      },
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    exit: {
+      left: "-100px",
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
   return (
-    <div
+    <motion.div
       style={{
         position: "fixed",
         top: 0,
@@ -29,11 +55,17 @@ const Modal = ({
         backdropFilter: "blur 14px",
         zIndex: 2,
       }}
+      exit={{ opacity: 0 }}
       onClick={() => handleOpen(false)}
     >
-      <div
-        className={`modal ${open ? "open" : "hidden"}`}
+      <motion.div
+        className={`modal`}
         onClick={(e) => e.stopPropagation()}
+        variants={modalVariant}
+        initial={"hidden"}
+        animate={"visible"}
+        key={"modal"}
+        exit={"exit"}
       >
         <div className="modal_header">
           <Slider {...settings}>
@@ -67,8 +99,8 @@ const Modal = ({
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
           </svg>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

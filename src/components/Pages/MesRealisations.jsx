@@ -5,6 +5,7 @@ import Modal from "../Modal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import { AnimatePresence } from "framer-motion";
 
 const MesRealisations = () => {
   const [projectData, setProjectData] = useState([]);
@@ -71,7 +72,7 @@ const MesRealisations = () => {
           <div className="project_wrapper">
             <h2 className="active">Projets</h2>
             <Slider {...settings}>
-              {projectData &&
+              {projectData ? (
                 projectData.map((project, i) => (
                   <div className="project_card" key={project.id}>
                     <div className="project_card__header">
@@ -97,21 +98,26 @@ const MesRealisations = () => {
                       </div>
                     </div>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div style={{ height: 500 }}></div>
+              )}
             </Slider>
           </div>
         </div>
-        {show && (
-          <Modal
-            title={projectData[modalIndex].title}
-            description={projectData[modalIndex].description}
-            technology={projectData[modalIndex].tags}
-            images={projectData[modalIndex].images}
-            open={show}
-            handleOpen={setShow}
-            ref={ref}
-          />
-        )}
+        <AnimatePresence>
+          {show && (
+            <Modal
+              title={projectData[modalIndex].title}
+              description={projectData[modalIndex].description}
+              technology={projectData[modalIndex].tags}
+              images={projectData[modalIndex].images}
+              open={show}
+              handleOpen={setShow}
+              ref={ref}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
