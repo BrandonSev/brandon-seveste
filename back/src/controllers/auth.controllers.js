@@ -50,6 +50,7 @@ module.exports.signIn = async (req, res) => {
         res.cookie("jwt", token, { httpOnly: true, maxAge });
         return res.status(200).json({
           message: "Connexion réussi",
+          token,
         });
       }
       return res.status(400).json({ message: "Mot de passe incorrect, veuillez réessayer" });
