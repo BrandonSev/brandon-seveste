@@ -4,6 +4,17 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [width, setWidth] = useState(0);
   const [left, setLeft] = useState();
+  const handleWidth = (e) => {
+    setWidth(e.target.offsetWidth)
+    if(window.scrollY > 15){
+      document.addEventListener("click", (e) => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    }
+  }
   useEffect(() => {
     const children = document.querySelectorAll(".nav_item");
     const linkClick = (e) => {
@@ -33,7 +44,10 @@ const Navbar = () => {
       setLeft("221px");
     }
     window.addEventListener("click", linkClick);
-    return () => window.removeEventListener("click", linkClick);
+    return () => {
+      window.removeEventListener("click", linkClick);
+      window.removeEventListener("click", handleWidth);
+    }
   }, [width]);
   return (
     <nav>
@@ -43,7 +57,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/"
-              onClick={(e) => setWidth(e.target.offsetWidth)}
+              onClick={handleWidth}
               className={({ isActive }) =>
                 isActive ? "nav_item .nav_active" : "nav_item"
               }
@@ -54,7 +68,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/mes-realisations"
-              onClick={(e) => setWidth(e.target.offsetWidth)}
+              onClick={handleWidth}
               className={({ isActive }) =>
                 isActive ? "nav_item .nav_active" : "nav_item"
               }
@@ -65,7 +79,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/contact"
-              onClick={(e) => setWidth(e.target.offsetWidth)}
+              onClick={handleWidth}
               className={({ isActive }) =>
                 isActive ? "nav_item .nav_active" : "nav_item"
               }
