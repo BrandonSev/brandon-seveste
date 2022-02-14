@@ -7,12 +7,10 @@ const Navbar = () => {
   const handleWidth = (e) => {
     setWidth(e.target.offsetWidth)
     if(window.scrollY > 15){
-      document.addEventListener("click", (e) => {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
         });
-      });
     }
   }
   useEffect(() => {

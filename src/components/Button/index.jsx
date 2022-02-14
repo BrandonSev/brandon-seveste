@@ -3,12 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const ButtonLink = ({ linkUrl, linkText }) => {
   const handleClick = (e) => {
-    document.addEventListener("click", (e) => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    });
   };
   useEffect(() => {
     return () => {
