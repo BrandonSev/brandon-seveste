@@ -6,6 +6,20 @@ const Navbar = () => {
   const [left, setLeft] = useState();
   useEffect(() => {
     const children = document.querySelectorAll(".nav_item");
+    const linkClick = (e) => {
+      if (e.target.href.split("/")[3] === "") {
+        setWidth(children[0].offsetWidth);
+        setLeft(children[0].offsetLeft - 1);
+      }
+      if (e.target.href.split("/")[3] === "mes-realisations") {
+        setWidth(children[1].offsetWidth);
+        setLeft("90px");
+      }
+      if (e.target.href.split("/")[3] === "contact") {
+        setWidth(children[2].offsetWidth);
+        setLeft("221px");
+      }
+    };
     if (window.location.pathname === "/") {
       setWidth(children[0].offsetWidth);
       setLeft(children[0].offsetLeft - 1);
@@ -18,6 +32,8 @@ const Navbar = () => {
       setWidth(children[2].offsetWidth);
       setLeft("221px");
     }
+    window.addEventListener("click", linkClick);
+    return () => window.removeEventListener("click", linkClick);
   }, [width]);
   return (
     <nav>

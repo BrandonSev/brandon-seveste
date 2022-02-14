@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import ButtonLink from "../Button";
 
 const Hero = ({ title, text, linkText, linkUrl }) => {
   return (
@@ -7,9 +7,7 @@ const Hero = ({ title, text, linkText, linkUrl }) => {
       <div className="hero_text">
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         <p>{text}</p>
-        <NavLink to={linkUrl} className="pulse button">
-          {linkText}
-        </NavLink>
+        <ButtonLink linkText={linkText} linkUrl={linkUrl} />
       </div>
       <div className="hero_image">
         <Image />

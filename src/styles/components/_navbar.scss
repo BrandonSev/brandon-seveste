@@ -1,6 +1,10 @@
 nav {
-  background-color: var(--primary-light);
+  position: sticky;
+  top: 0;
   padding: 1rem 0;
+  background-color: var(--primary-light);
+  z-index: 2;
+  border-bottom: 1px solid #3D3D3D;
   .navbar {
     position: relative;
     display: flex;

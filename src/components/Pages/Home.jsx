@@ -35,7 +35,10 @@ const Home = () => {
             {categories ? (
               categories.map((category) => {
                 return (
-                  <div className={`skills_${category.title.toLowerCase()}`}>
+                  <div
+                    className={`skills_${category.title.toLowerCase()}`}
+                    key={category.id}
+                  >
                     <span className="skills_badge">{category.title}</span>
                     {category.underCategories.map((underCategory) => {
                       return (
@@ -70,7 +73,7 @@ const Home = () => {
                 );
               })
             ) : (
-              <div style={{ height: 500 }}></div>
+              <div style={{ height: 500 }} />
             )}
           </div>
         </div>
