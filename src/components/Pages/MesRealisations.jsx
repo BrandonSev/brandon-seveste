@@ -112,6 +112,7 @@ const MesRealisations = () => {
               description={projectData[modalIndex].description}
               technology={projectData[modalIndex].tags}
               images={projectData[modalIndex].images}
+              url={projectData[modalIndex].url}
               open={show}
               handleOpen={setShow}
               ref={ref}

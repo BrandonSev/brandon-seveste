@@ -11,6 +11,7 @@ const Modal = ({
   description,
   open,
   handleOpen,
+  url
 }) => {
   const ref = useRef();
   useOnClickOutside(ref, () => handleOpen(false));
@@ -86,9 +87,9 @@ const Modal = ({
           <h2>{title}</h2>
           <p className="description">{description}</p>
           <div className="modal_button">
-            <NavLink to="/" className="button button_small pulse">
+            <a href={`${url}`} className="button button_small pulse">
               Visiter le site web
-            </NavLink>
+            </a>
           </div>
         </div>
         <div className="modal_close pulse" onClick={() => handleOpen(false)}>
