@@ -10,6 +10,8 @@ const Footer = () => {
             <div className="footer_social_list">
               <a
                 href={"https://github.com/BrandonSev"}
+                target={"_blank"}
+                rel={"noopener noreferrer"}
                 className="footer_social_item"
               >
                 <div className="social_logo">
@@ -26,6 +28,8 @@ const Footer = () => {
               </a>
               <a
                 href={"https://www.linkedin.com/in/brandon-seveste/"}
+                target={"_blank"}
+                rel={"noopener noreferrer"}
                 className="footer_social_item"
               >
                 <div className="social_logo">

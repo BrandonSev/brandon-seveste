@@ -16,6 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     const children = document.querySelectorAll(".nav_item");
     const linkClick = (e) => {
+      if(e.target.className !== "pulse button") return;
       if (e.target.href.split("/")[3] === "") {
         setWidth(children[0].offsetWidth);
         setLeft(children[0].offsetLeft - 1);

@@ -1,6 +1,8 @@
 import Slider from "react-slick";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import useOnClickOutside from "../../hooks";
+import {useRef} from "react";
 
 const Modal = ({
   images,
@@ -10,6 +12,8 @@ const Modal = ({
   open,
   handleOpen,
 }) => {
+  const ref = useRef();
+  useOnClickOutside(ref, () => handleOpen(false));
   const settings = {
     dots: true,
     infinite: true,
@@ -42,7 +46,6 @@ const Modal = ({
       },
     },
   };
-
   return (
     <motion.div
       style={{
@@ -56,21 +59,20 @@ const Modal = ({
         zIndex: 2,
       }}
       exit={{ opacity: 0 }}
-      onClick={() => handleOpen(false)}
     >
       <motion.div
         className={`modal`}
-        onClick={(e) => e.stopPropagation()}
         variants={modalVariant}
         initial={"hidden"}
         animate={"visible"}
         key={"modal"}
         exit={"exit"}
+        ref={ref}
       >
         <div className="modal_header">
           <Slider {...settings}>
             {images.map((image) => (
-              <div>
+              <div key={image.id}>
                 <img
                   src={`${process.env.REACT_APP_API_URL}/images/${image.src}`}
                   alt={image.alt}
@@ -84,7 +86,7 @@ const Modal = ({
           <h2>{title}</h2>
           <p className="description">{description}</p>
           <div className="modal_button">
-            <NavLink to="/" className="button button_small">
+            <NavLink to="/" className="button button_small pulse">
               Visiter le site web
             </NavLink>
           </div>

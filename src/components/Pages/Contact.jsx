@@ -33,7 +33,7 @@ const Contact = () => {
       <Hero
         title={"Me contacter"}
         text={
-          "Actuellement en formation développeur web et Mobile, je maîtrise le Html / css / Javascript , ainsi que l’utilisation de la librairie React."
+          "Vous désirez me contacter pour des questions spécifiques ou professionnelles, n'hésitez pas à me contacter via le formulaire ci-dessous."
         }
         linkText={"A propos de moi"}
         linkUrl={"/"}

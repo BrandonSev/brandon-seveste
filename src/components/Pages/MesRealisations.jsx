@@ -62,7 +62,7 @@ const MesRealisations = () => {
       <Hero
         title={"Mes réalisations"}
         text={
-          "Actuellement en formation développeur web et Mobile, je maîtrise le Html / css / Javascript , ainsi que l’utilisation de la librairie React."
+          "Vous trouverez ci-dessous tous les projets auxquels j'ai participé sur le plan professionel, scolaire ou personnel."
         }
         linkText={"Me contacter"}
         linkUrl={"/contact"}
@@ -90,7 +90,7 @@ const MesRealisations = () => {
                       </p>
                       <div className="project_card__button">
                         <button
-                          className="button button_small"
+                          className="button button_small pulse"
                           onClick={() => handleClick(i)}
                         >
                           En savoir plus
