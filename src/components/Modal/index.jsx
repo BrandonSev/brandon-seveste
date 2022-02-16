@@ -87,7 +87,7 @@ const Modal = ({
           <h2>{title}</h2>
           <p className="description">{description}</p>
           <div className="modal_button">
-            <a href={`${url}`} className="button button_small pulse">
+            <a href={`${url}`} rel={"noreferrer noopener"} target={"_blank"} className="button button_small pulse">
               Visiter le site web
             </a>
           </div>

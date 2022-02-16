@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Contact from "./components/Pages/Contact";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [activeScroll, setActiveScroll] = useState(false);
@@ -48,6 +49,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mes-realisations" element={<MesRealisations />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <div
         className={`scrollTop ${activeScroll ? "show" : "hidden"}`}
