@@ -25,7 +25,10 @@ const Contact = () => {
             toast.error(res.data.message);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          toast.error("Une erreur est survenue")
+          console.log(err)
+        });
     },
   });
   return (
