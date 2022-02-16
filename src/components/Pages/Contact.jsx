@@ -118,6 +118,7 @@ const Contact = () => {
                   type="submit"
                   className="button pulse"
                   onClick={formik.handleSubmit}
+                  style={{ display: "flex", alignItems: "center" }}
                 >
                   {formik.isSubmitting ? (
                     <>
@@ -126,8 +127,9 @@ const Contact = () => {
                         width="16"
                         height="16"
                         fill="currentColor"
-                        className="bi bi-arrow-clockwise"
+                        className="bi bi-arrow-clockwise rotate"
                         viewBox="0 0 16 16"
+                        style={{ display: "block", marginRight: "1rem" }}
                       >
                         <path
                           fillRule="evenodd"
