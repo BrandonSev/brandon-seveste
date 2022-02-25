@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import useOnClickOutside from "../../hooks";
 import {useRef} from "react";
