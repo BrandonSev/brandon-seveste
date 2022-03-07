@@ -7,7 +7,9 @@ const Hero = ({ title, text, linkText, linkUrl }) => {
       <div className="hero_text">
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         <p>{text}</p>
-        <ButtonLink linkText={linkText} linkUrl={linkUrl} />
+        <ButtonLink linkText={linkText} linkUrl={linkUrl}/>
+          <a className="button pulse" href={"https://cv.brandon-seveste.fr"} target={"_blank"}
+             rel={"noreferrer noopener"}>Voir mon CV</a>
       </div>
       <div className="hero_image">
         <Image />
