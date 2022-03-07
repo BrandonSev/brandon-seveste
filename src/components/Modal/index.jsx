@@ -52,7 +52,7 @@ const Modal = ({
           right: 0,
           left: 0,
           background: "#00000080",
-          backdropFilter: "blur(14px)",
+          backdropFilter: "blur(5px)",
           zIndex: 2,
         }}
         initial={{opacity: 1}}
