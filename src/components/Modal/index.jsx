@@ -30,6 +30,9 @@ const Modal = ({
       transition: {
         delay: 0.3,
       },
+      transform: {
+        translate: 50
+      }
     },
     visible: {
       scale: 1,
@@ -39,7 +42,6 @@ const Modal = ({
       },
     },
     exit: {
-      left: "-100px",
       opacity: 0,
       transition: {
         duration: 0.3,

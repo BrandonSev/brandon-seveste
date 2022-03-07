@@ -14,8 +14,8 @@
     }
 
     p {
+      font-size: 1rem;
       padding: 2rem 0;
-      font-weight: lighter;
     }
   }
 
@@ -41,7 +41,10 @@
     text-align: inherit;
 
     .hero_text {
-      max-width: 520px;
+      width: 418px;
+      min-width: 418px;
+      max-width: 418px;
+
       h1 {
         font-size: 46px;
       }
@@ -52,6 +55,10 @@
   .hero{
     padding: 4rem 1rem;
     .hero_text {
+      width: 520px;
+      min-width: 520px;
+      max-width: 520px;
+
       h1 {
         font-size: 64px;
       }

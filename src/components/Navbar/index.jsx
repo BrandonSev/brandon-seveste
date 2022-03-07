@@ -45,7 +45,6 @@ const Navbar = () => {
     window.addEventListener("click", linkClick);
     return () => {
       window.removeEventListener("click", linkClick);
-      window.removeEventListener("click", handleWidth);
     }
   }, [width]);
   return (

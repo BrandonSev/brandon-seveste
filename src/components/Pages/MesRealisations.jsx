@@ -60,24 +60,24 @@ const MesRealisations = () => {
   return (
     <div style={{ position: "relative" }}>
       <Hero
-        title={"Mes réalisations"}
-        text={
-          "Vous trouverez ci-dessous tous les projets auxquels j'ai participé sur le plan professionel, scolaire ou personnel."
-        }
-        linkText={"Me contacter"}
-        linkUrl={"/contact"}
+          title={"Mes réalisations"}
+          text={
+            "Vous trouverez ci-dessous tous les projets auxquels j'ai participé sur le plan professionel, scolaire ou personnel."
+          }
+          linkText={"Me contacter"}
+          linkUrl={"/contact"}
       />
-      <div className="project">
+      <div className={`project ${show ? "modal-open" : ""}`}>
         <div className="container">
           <div className="project_wrapper">
             <h2 className="active">Projets</h2>
             <Slider {...settings}>
               {projectData ? (
-                projectData.map((project, i) => (
-                  <div className="project_card" key={project.id}>
-                    <div className="project_card__header">
-                      <img
-                        src={`${process.env.REACT_APP_API_URL}/images/${project.images[0].src}`}
+                  projectData.map((project, i) => (
+                      <div className="project_card" key={project.id}>
+                        <div className="project_card__header">
+                          <img
+                              src={`${process.env.REACT_APP_API_URL}/images/${project.images[0].src}`}
                         alt={project.images.alt}
                       />
                     </div>
@@ -100,7 +100,7 @@ const MesRealisations = () => {
                   </div>
                 ))
               ) : (
-                <div style={{ height: 500 }}></div>
+                  <div style={{height: 500}}/>
               )}
             </Slider>
           </div>

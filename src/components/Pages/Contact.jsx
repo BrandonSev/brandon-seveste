@@ -115,10 +115,10 @@ const Contact = () => {
               </div>
               <div className="contact_form__group">
                 <button
-                  type="submit"
-                  className="button pulse"
-                  onClick={formik.handleSubmit}
-                  style={{ display: "flex", alignItems: "center" }}
+                    type="submit"
+                    className="button pulse"
+                    onClick={formik.handleSubmit}
+                    style={{display: "flex", alignItems: "center", justifyContent: 'center'}}
                 >
                   {formik.isSubmitting ? (
                     <>

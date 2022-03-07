@@ -1,9 +1,7 @@
 .modal {
-  position: fixed;
-  left: 0;
-  top: 7vh;
-  bottom: 0;
-  right: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 90%;
   max-height: fit-content;
   max-width: fit-content;
@@ -12,6 +10,7 @@
   background-color: var(--background);
   box-shadow: 1px 0 20px #000000AC;
   animation: scaleIn .3s both;
+  transform: translate(-50%, -50%) !important;
   z-index: 3;
 
   &.hidden {
@@ -122,14 +121,12 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .modal {
-    top: 11vh;
     width: 65%;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .modal {
-    top: 14vh;
     min-width: 700px;
     width: 40%;
   }
