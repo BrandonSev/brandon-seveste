@@ -10,6 +10,10 @@
   .skills_wrapper {
     .skills_frontend,
     .skills_backend {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem 0;
       position: relative;
       margin-top: 3rem;
       padding: 1.5rem;
