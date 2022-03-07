@@ -25,20 +25,15 @@ const Modal = ({
 
   const modalVariant = {
     hidden: {
-      scale: 0,
       opacity: 0,
       transition: {
         delay: 0.3,
       },
-      transform: {
-        translate: 50
-      }
     },
     visible: {
-      scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
       },
     },
     exit: {
@@ -50,17 +45,18 @@ const Modal = ({
   };
   return (
     <motion.div
-      style={{
-        position: "fixed",
-        top: 0,
-        bottom: 0,
-        right: 0,
-        left: 0,
-        background: "#00000080",
-        backdropFilter: "blur 14px",
-        zIndex: 2,
-      }}
-      exit={{ opacity: 0 }}
+        style={{
+          position: "fixed",
+          top: 0,
+          bottom: 0,
+          right: 0,
+          left: 0,
+          background: "#00000080",
+          backdropFilter: "blur(14px)",
+          zIndex: 2,
+        }}
+        initial={{opacity: 1}}
+        exit={{opacity: 0}}
     >
       <motion.div
         className={`modal`}
