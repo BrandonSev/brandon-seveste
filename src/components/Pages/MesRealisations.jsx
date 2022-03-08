@@ -67,7 +67,7 @@ const MesRealisations = () => {
           linkText={"Me contacter"}
           linkUrl={"/contact"}
       />
-      <div className={`project ${show ? "modal-open" : ""}`}>
+      <div className={`project`}>
         <div className="container">
           <div className="project_wrapper">
             <h2 className="active">Projets</h2>

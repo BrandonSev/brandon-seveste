@@ -3,36 +3,37 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [width, setWidth] = useState(0);
-  const [left, setLeft] = useState();
+  const [left, setLeft] = useState("");
   const handleWidth = (e) => {
     setWidth(e.target.offsetWidth)
-    if(window.scrollY > 15){
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+    if (window.scrollY > 15) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }
   useEffect(() => {
     const children = document.querySelectorAll(".nav_item");
     const linkClick = (e) => {
-      if(e.target.className !== "pulse button") return;
-      if (e.target.href.split("/")[3] === "") {
+      if (e.detail.target.href.split("/")[3] === "") {
         setWidth(children[0].offsetWidth);
-        setLeft(children[0].offsetLeft - 1);
+        setLeft(children[0].offsetLeft);
+        return;
       }
-      if (e.target.href.split("/")[3] === "mes-realisations") {
+      if (e.detail.target.href.split("/")[3] === "mes-realisations") {
         setWidth(children[1].offsetWidth);
         setLeft("90px");
+        return;
       }
-      if (e.target.href.split("/")[3] === "contact") {
+      if (e.detail.target.href.split("/")[3] === "contact") {
         setWidth(children[2].offsetWidth);
         setLeft("221px");
       }
     };
     if (window.location.pathname === "/") {
       setWidth(children[0].offsetWidth);
-      setLeft(children[0].offsetLeft - 1);
+      setLeft(children[0].offsetLeft);
     }
     if (window.location.pathname === "/mes-realisations") {
       setWidth(children[1].offsetWidth);
@@ -42,9 +43,9 @@ const Navbar = () => {
       setWidth(children[2].offsetWidth);
       setLeft("221px");
     }
-    window.addEventListener("click", linkClick);
+    window.addEventListener("active-menu", linkClick);
     return () => {
-      window.removeEventListener("click", linkClick);
+      window.removeEventListener("active-menu", linkClick);
     }
   }, [width]);
   return (
