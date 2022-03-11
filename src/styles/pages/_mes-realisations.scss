@@ -9,6 +9,40 @@
       font-size: 30px;
     }
 
+    .swiper {
+      margin-top: 3rem;
+
+      .swiper-pagination.swiper-pagination-bullets {
+        position: absolute;
+        bottom: 20px;
+      }
+    }
+
+    .swiper_navigation__wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 0 2rem;
+      margin-top: 2rem;
+
+      .swiper-prev,
+      .swiper-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--background);
+        border: 2px solid var(--secondary);
+        border-radius: 50%;
+        cursor: pointer;
+
+        svg {
+          width: 24px;
+        }
+      }
+    }
+
+
     .project_card {
       background-color: var(--background);
       border-radius: 10px;
@@ -24,17 +58,6 @@
 
       h3 {
         font-size: 1.3rem;
-      }
-
-      .slick-list {
-        margin-top: 0;
-      }
-
-      .project_card__header {
-        .slick-slide {
-          padding: 0;
-        }
-
       }
 
       p:not(.technology) {
@@ -71,55 +94,5 @@
       }
 
     }
-
-    .slick-list {
-      margin-top: 3rem;
-
-      .slick-slide {
-        padding: 0 .5rem;
-      }
-    }
-
-    .slick-dots {
-      bottom: -34px;
-
-      .slick-active {
-        button:before {
-          color: var(--secondary)
-        }
-      }
-
-      button:before {
-        font-size: .8rem;
-        color: var(--primary);
-        opacity: 1;
-      }
-    }
-
   }
-    .dots {
-      margin-top: 2rem;
-      display: flex;
-      padding: 10px 0;
-      justify-content: center;
-    }
-
-    .dot {
-      border: none;
-      width: 10px;
-      height: 10px;
-      background: var(--primary);
-      border-radius: 50%;
-      margin: 0 5px;
-      padding: 5px;
-      cursor: pointer;
-    }
-
-    .dot:focus {
-      outline: none;
-    }
-
-    .dot.active {
-      background: var(--secondary);
-    }
 }

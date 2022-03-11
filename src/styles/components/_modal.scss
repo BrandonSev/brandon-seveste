@@ -3,8 +3,8 @@
   top: 50%;
   left: 50%;
   width: 90%;
-  max-height: fit-content;
-  max-width: fit-content;
+  // max-height: fit-content;
+  // max-width: fit-content;
   margin: 0 auto;
   border-radius: 25px;
   background-color: var(--background);
@@ -24,39 +24,10 @@
       object-fit: cover;
     }
 
-    .slick-dots {
-      bottom: 10px;
-
-      .slick-active {
-        button:before {
-          color: var(--secondary)
-        }
-      }
-
-      button:before {
-        font-size: .8rem;
-        color: var(--primary);
-        opacity: 1;
-      }
-    }
-
-    .dot {
-      border: none;
-      width: 10px;
-      height: 10px;
-      background: var(--primary);
-      border-radius: 50%;
-      margin: 0 5px;
-      padding: 5px;
-      cursor: pointer;
-    }
-
-    .dot:focus {
-      outline: none;
-    }
-
-    .dot.active {
-      background: var(--secondary);
+    button:before {
+      font-size: .8rem;
+      color: var(--primary);
+      opacity: 1;
     }
   }
 
@@ -72,13 +43,31 @@
       font-size: .9rem;
     }
 
+    .date {
+      font-size: .9rem;
+
+      span {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        vertical-align: middle;
+
+        svg {
+          margin-top: -5px;
+          width: 20px;
+          margin-right: .5rem;
+        }
+      }
+    }
+
     h2 {
+      margin-top: 1rem;
       font-size: 26px;
     }
 
     p.description {
       color: var(--color-light);
-      margin: 2rem 0;
+      margin: 1rem 0 2rem 0;
       font-size: .98rem;
       line-height: 1.4;
       max-height: 205px;
@@ -109,6 +98,18 @@
 
     svg {
       width: 26px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    .modal_body {
+      .date {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
   }
 }
